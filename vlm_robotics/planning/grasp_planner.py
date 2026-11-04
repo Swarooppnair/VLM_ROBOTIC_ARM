@@ -28,25 +28,21 @@ class GraspPlanner:
         if "bottle" in object_type or "glass" in object_type:
             grasp_z = 0.028
             hover = 0.08
-            place_z = 0.045
+            place_z = max(0.035, dest_pos[2])
         else:
             # Cube grasp: align gripper with center of 3cm cube
-            grasp_z = max(0.016, object_pos[2])
+            grasp_z = max(0.015, object_pos[2])
             hover = self.hover_height
-            if dest_pos[2] > 0.03:
-                # Stacking on top of another object
-                place_z = dest_pos[2] + 0.007
-            else:
-                place_z = max(0.022, dest_pos[2])
+            place_z = max(0.015, dest_pos[2])
 
         pre_grasp = np.array([object_pos[0], object_pos[1], grasp_z + hover])
         grasp = np.array([object_pos[0], object_pos[1], grasp_z])
         lift = np.array([object_pos[0], object_pos[1], grasp_z + self.lift_height])
 
         # Destination waypoints
-        pre_place = np.array([dest_pos[0], dest_pos[1], max(0.12, place_z + self.lift_height)])
+        pre_place = np.array([dest_pos[0], dest_pos[1], max(0.18, place_z + 0.08)])
         place = np.array([dest_pos[0], dest_pos[1], place_z])
-        retreat = np.array([dest_pos[0], dest_pos[1], place_z + hover])
+        retreat = np.array([dest_pos[0], dest_pos[1], max(0.20, place_z + 0.08)])
 
         # Validate waypoints
         for name, pt in [("pre_grasp", pre_grasp), ("grasp", grasp), ("lift", lift),

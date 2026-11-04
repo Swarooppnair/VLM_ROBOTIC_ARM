@@ -97,18 +97,54 @@ class TaskPlanner:
             task_type = "pick_and_place"
             vlm_plan["task"] = "pick_and_place"
 
-        # Prioritize explicit object mentioned by user in natural command
-        cmd_obj = self.coord_mapper.normalize_object_name(command)
-        if cmd_obj:
-            target_obj = cmd_obj
-            vlm_plan["object"] = target_obj
-        elif not target_obj:
-            target_obj = self.coord_mapper.normalize_object_name(command)
-            vlm_plan["object"] = target_obj
+        # Parse semantic source object and destination directly from natural command
+        import re
+        cmd_matched = False
+        m_cmd = re.match(
+            r'^\s*(?:place|put|move|transfer|shift|set|drop)\s+(?:the\s+)?(.+?)\s+(on top of|on to|onto|on|in to|into|in|inside|next to|beside|near|to|at)\s+(.+)$',
+            command,
+            re.IGNORECASE
+        )
+        if m_cmd:
+            src_str, prep_str, dst_str = m_cmd.groups()
+            src_norm = self.coord_mapper.normalize_object_name(src_str)
+            if src_norm:
+                target_obj = src_norm
+                vlm_plan["object"] = target_obj
+                cmd_matched = True
 
-        # Auto-extract destination clause from user command if VLM missed it
+            prep_lower = prep_str.lower()
+            dst_clean = dst_str.strip()
+            if any(w in prep_lower for w in ["on", "onto", "on top"]):
+                destination = f"on top of {dst_clean}"
+            elif any(w in prep_lower for w in ["in", "into", "inside"]):
+                destination = "box" if any(w in dst_clean.lower() for w in ["box", "container", "bin"]) else dst_clean
+            elif any(w in prep_lower for w in ["next to", "beside", "near"]):
+                destination = f"next to {dst_clean}"
+            else:
+                destination = dst_clean
+            vlm_plan["destination"] = destination
+            task_type = "pick_and_place"
+            vlm_plan["task"] = "pick_and_place"
+
+        if not cmd_matched:
+            # Fallback to general object extraction
+            cmd_obj = self.coord_mapper.normalize_object_name(command)
+            if cmd_obj:
+                target_obj = cmd_obj
+                vlm_plan["object"] = target_obj
+            elif not target_obj:
+                target_obj = self.coord_mapper.normalize_object_name(command)
+                vlm_plan["object"] = target_obj
+
+        # If user explicitly said "on <glass/cube>", ensure destination doesn't get downgraded by VLM
+        if destination and any(w in cmd_lower for w in ["on ", "on top", "onto"]):
+            if "next to" in destination or "next_to" in destination:
+                destination = destination.replace("next to", "on top of").replace("next_to", "on top of")
+                vlm_plan["destination"] = destination
+
+        # Auto-extract destination clause from user command if still missing
         if not destination:
-            import re
             m = re.search(r'\b(?:on top of|on|in|into|inside|to|at|beside|near)\s+(.+)$', command, re.IGNORECASE)
             if m:
                 destination = m.group(1).strip()
@@ -176,11 +212,19 @@ class TaskPlanner:
 
             elif action == "open_gripper":
                 self.gripper_ctrl.open(duration=1.5)
+                time.sleep(0.3)
 
             elif action == "close_gripper":
                 self.gripper_ctrl.close(duration=1.5)
 
             elif action == "go_home":
+                # Ensure arm lifts above any workspace objects before swinging home
+                cur_ee = self.env.get_grasp_position()
+                if cur_ee[2] < 0.20:
+                    safe_up = np.array([cur_ee[0], cur_ee[1], 0.22])
+                    self.robot_ctrl.move_to_cartesian_position(
+                        safe_up, duration=1.0, gripper_target=self.gripper_ctrl.current_target
+                    )
                 self.robot_ctrl.go_home(duration=3.0)
 
     def execute_stack_cubes(self) -> Tuple[bool, str, Dict[str, Any]]:

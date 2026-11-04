@@ -80,61 +80,85 @@
     <!-- Glass 1 (Blue Glass Cup) -->
     <body name="glass1" pos="0.23 0.16 0.035">
       <freejoint name="glass1_joint"/>
-      <geom name="glass1_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass1_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.08 0.40 0.90 0.95" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass1_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.1 0.45 0.95 0.9" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass1_rim" type="cylinder" size="0.015 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="0.2 0.60 1.0 0.95" contype="1" conaffinity="1"/>
+      <geom name="glass1_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="0.2 0.60 1.0 0.95" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Glass 2 (Purple Glass Cup) -->
     <body name="glass2" pos="0.22 -0.06 0.035">
       <freejoint name="glass2_joint"/>
-      <geom name="glass2_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass2_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.55 0.10 0.85 1.0" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass2_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.65 0.12 0.95 1.0" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass2_rim" type="cylinder" size="0.016 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="0.80 0.25 1.0 1.0" contype="1" conaffinity="1"/>
+      <geom name="glass2_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="0.80 0.25 1.0 1.0" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Glass 3 (Amber/Clear Glass Cup) -->
     <body name="glass3" pos="0.27 0.0 0.035">
       <freejoint name="glass3_joint"/>
-      <geom name="glass3_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass3_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.85 0.60 0.30 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass3_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.95 0.7 0.4 0.75" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass3_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="1.0 0.75 0.45 0.8" contype="1" conaffinity="1"/>
+      <geom name="glass3_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="1.0 0.75 0.45 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Glass 4 (Emerald Green Glass Cup) -->
     <body name="glass4" pos="0.13 -0.16 0.035">
       <freejoint name="glass4_joint"/>
-      <geom name="glass4_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass4_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.10 0.75 0.25 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass4_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.15 0.85 0.35 0.75" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass4_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="0.2 0.95 0.4 0.8" contype="1" conaffinity="1"/>
+      <geom name="glass4_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="0.2 0.95 0.4 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Glass 5 (Rose Pink Glass Cup) -->
     <body name="glass5" pos="0.26 -0.12 0.035">
       <freejoint name="glass5_joint"/>
-      <geom name="glass5_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass5_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.85 0.15 0.45 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass5_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.95 0.25 0.55 0.75" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass5_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="1.0 0.35 0.65 0.8" contype="1" conaffinity="1"/>
+      <geom name="glass5_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="1.0 0.35 0.65 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Glass 6 (Crystal Teal Glass Cup) -->
     <body name="glass6" pos="0.14 0.10 0.035">
       <freejoint name="glass6_joint"/>
-      <geom name="glass6_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+      <geom name="glass6_base" type="cylinder" size="0.017 0.004" pos="0 0 -0.027" mass="0.04"
+        rgba="0.08 0.75 0.75 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.2 0.2 0.01" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+      <geom name="glass6_geom" type="cylinder" size="0.014 0.023" pos="0 0 0.0" mass="0.03"
         rgba="0.1 0.85 0.85 0.75" contype="1" conaffinity="1" condim="4"
         friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
-      <geom name="glass6_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
-        rgba="0.2 0.95 0.95 0.8" contype="1" conaffinity="1"/>
+      <geom name="glass6_rim" type="cylinder" size="0.018 0.003" pos="0 0 0.024" mass="0.01"
+        rgba="0.2 0.95 0.95 0.85" contype="1" conaffinity="1" condim="4"
+        friction="3.5 0.2 0.01" solref="0.005 1" solimp="0.98 0.99 0.001"/>
     </body>
 
     <!-- Box / Container (open top) -->

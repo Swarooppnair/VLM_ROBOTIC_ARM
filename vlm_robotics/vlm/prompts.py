@@ -25,8 +25,8 @@ Available destinations:
 - "right_side": The right area of the table (-Y)
 - "front" / "back" / "center": General areas of the table
 - "corner": Front-left or front-right corner of the table
-- "on top of <object>": Stacking on top of another object
-- "next_to_<object>": Adjacent to another object
+- "on top of <object>": Stacking on top of another object (e.g., "on top of glass2", "on top of red_cube"). NEVER use "next_to" when the user says "on" or "on top of".
+- "next to <object>": Adjacent to another object (e.g., "next to green_cube").
 - Any other spatial destination the user requests
 
 Task Classification Rules:

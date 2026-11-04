@@ -1,0 +1,163 @@
+<mujoco model="open_manipulator_x tabletop scene">
+  <compiler angle="radian" meshdir="../robot"/>
+
+  <option cone="elliptic" impratio="10" timestep="0.002"/>
+
+  <statistic center="0.2 0 0.2" extent="0.8"/>
+
+  <visual>
+    <headlight diffuse="0.7 0.7 0.7" ambient="0.4 0.4 0.4" specular="0.2 0.2 0.2"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="130" elevation="-25"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0.05 0.05 0.1" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.22 0.25 0.28" rgb2="0.15 0.17 0.2"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.1"/>
+    <material name="table_mat" rgba="0.92 0.92 0.94 1.0" reflectance="0.15" shininess="0.3"/>
+    <material name="box_mat" rgba="0.2 0.5 0.7 1.0" reflectance="0.1"/>
+    <material name="leg_mat" rgba="0.3 0.3 0.3 1.0"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0.2 0 1.5" dir="0 0 -1" directional="true" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3"/>
+    <light pos="0.5 0.5 1.0" dir="-0.5 -0.5 -1" directional="true" diffuse="0.5 0.5 0.5"/>
+    <geom name="floor" size="1.5 1.5 0.05" pos="0 0 -0.4" type="plane" material="groundplane"/>
+
+    <!-- Table Body -->
+    <body name="table" pos="0.16 0.0 0.0">
+      <geom name="table_top" type="box" size="0.28 0.36 0.015" pos="0 0 -0.015" material="table_mat"
+        contype="1" conaffinity="1" friction="1.2 0.005 0.0001"/>
+      <!-- Table Legs -->
+      <geom name="leg1" type="cylinder" size="0.02 0.19" pos="0.24 0.32 -0.205" material="leg_mat"/>
+      <geom name="leg2" type="cylinder" size="0.02 0.19" pos="0.24 -0.32 -0.205" material="leg_mat"/>
+      <geom name="leg3" type="cylinder" size="0.02 0.19" pos="-0.24 0.32 -0.205" material="leg_mat"/>
+      <geom name="leg4" type="cylinder" size="0.02 0.19" pos="-0.24 -0.32 -0.205" material="leg_mat"/>
+    </body>
+
+    <!-- Red Cube -->
+    <body name="red_cube" pos="0.16 -0.06 0.015">
+      <freejoint name="red_cube_joint"/>
+      <geom name="red_cube_geom" type="box" size="0.015 0.015 0.015" mass="0.02" rgba="0.92 0.15 0.15 1.0"
+        contype="1" conaffinity="1" condim="4" friction="2.8 0.1 0.005" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+    </body>
+
+    <!-- Blue Cube -->
+    <body name="blue_cube" pos="0.17 0.05 0.015">
+      <freejoint name="blue_cube_joint"/>
+      <geom name="blue_cube_geom" type="box" size="0.015 0.015 0.015" mass="0.02" rgba="0.15 0.3 0.95 1.0"
+        contype="1" conaffinity="1" condim="4" friction="2.8 0.1 0.005" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+    </body>
+
+    <!-- Green Cube -->
+    <body name="green_cube" pos="0.21 0.01 0.015">
+      <freejoint name="green_cube_joint"/>
+      <geom name="green_cube_geom" type="box" size="0.015 0.015 0.015" mass="0.02" rgba="0.15 0.85 0.25 1.0"
+        contype="1" conaffinity="1" condim="4" friction="2.8 0.1 0.005" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+    </body>
+
+    <!-- Orange Cube -->
+    <body name="orange_cube" pos="0.24 0.08 0.015">
+      <freejoint name="orange_cube_joint"/>
+      <geom name="orange_cube_geom" type="box" size="0.015 0.015 0.015" mass="0.02" rgba="0.95 0.52 0.1 1.0"
+        contype="1" conaffinity="1" condim="4" friction="2.8 0.1 0.005" solref="0.005 1" solimp="0.95 0.99 0.001"/>
+    </body>
+
+    <!-- Yellow Bottle -->
+    <body name="bottle" pos="0.19 -0.16 0.035">
+      <freejoint name="bottle_joint"/>
+      <geom name="bottle_body" type="cylinder" size="0.014 0.024" pos="0 0 -0.008" mass="0.02"
+        rgba="1.0 0.85 0.05 1.0" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="bottle_neck" type="cylinder" size="0.007 0.008" pos="0 0 0.020" mass="0.003"
+        rgba="1.0 0.85 0.05 1.0" contype="1" conaffinity="1"/>
+      <geom name="bottle_cap" type="cylinder" size="0.008 0.005" pos="0 0 0.028" mass="0.002"
+        rgba="0.9 0.15 0.15 1.0" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 1 (Blue Glass Cup) -->
+    <body name="glass1" pos="0.23 0.16 0.035">
+      <freejoint name="glass1_joint"/>
+      <geom name="glass1_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.1 0.45 0.95 0.9" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass1_rim" type="cylinder" size="0.015 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="0.2 0.60 1.0 0.95" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 2 (Purple Glass Cup) -->
+    <body name="glass2" pos="0.22 -0.06 0.035">
+      <freejoint name="glass2_joint"/>
+      <geom name="glass2_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.65 0.12 0.95 1.0" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass2_rim" type="cylinder" size="0.016 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="0.80 0.25 1.0 1.0" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 3 (Amber/Clear Glass Cup) -->
+    <body name="glass3" pos="0.27 0.0 0.035">
+      <freejoint name="glass3_joint"/>
+      <geom name="glass3_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.95 0.7 0.4 0.75" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass3_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="1.0 0.75 0.45 0.8" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 4 (Emerald Green Glass Cup) -->
+    <body name="glass4" pos="0.13 -0.16 0.035">
+      <freejoint name="glass4_joint"/>
+      <geom name="glass4_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.15 0.85 0.35 0.75" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass4_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="0.2 0.95 0.4 0.8" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 5 (Rose Pink Glass Cup) -->
+    <body name="glass5" pos="0.26 -0.12 0.035">
+      <freejoint name="glass5_joint"/>
+      <geom name="glass5_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.95 0.25 0.55 0.75" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass5_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="1.0 0.35 0.65 0.8" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Glass 6 (Crystal Teal Glass Cup) -->
+    <body name="glass6" pos="0.14 0.10 0.035">
+      <freejoint name="glass6_joint"/>
+      <geom name="glass6_geom" type="cylinder" size="0.013 0.026" pos="0 0 -0.008" mass="0.02"
+        rgba="0.1 0.85 0.85 0.75" contype="1" conaffinity="1" condim="4"
+        friction="2.8 0.1 0.005" solref="0.01 1" solimp="0.9 0.95 0.001"/>
+      <geom name="glass6_rim" type="cylinder" size="0.014 0.004" pos="0 0 0.022" mass="0.003"
+        rgba="0.2 0.95 0.95 0.8" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Box / Container (open top) -->
+    <body name="box" pos="0.12 0.18 0.0">
+      <geom name="box_bottom" type="box" size="0.045 0.045 0.003" pos="0 0 0.003" material="box_mat"
+        contype="1" conaffinity="1" friction="1.5 0.05 0.001"/>
+      <geom name="box_wall_left" type="box" size="0.045 0.003 0.02" pos="0 0.042 0.02" material="box_mat"
+        contype="1" conaffinity="1"/>
+      <geom name="box_wall_right" type="box" size="0.045 0.003 0.02" pos="0 -0.042 0.02" material="box_mat"
+        contype="1" conaffinity="1"/>
+      <geom name="box_wall_front" type="box" size="0.003 0.042 0.02" pos="0.042 0 0.02" material="box_mat"
+        contype="1" conaffinity="1"/>
+      <geom name="box_wall_back" type="box" size="0.003 0.042 0.02" pos="-0.042 0 0.02" material="box_mat"
+        contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Tabletop Camera (viewing workspace from front-side elevated angle) -->
+    <camera name="workspace_cam" pos="0.45 -0.15 0.45" xyaxes="0.55 0.835 0.0 -0.48 0.316 0.819"/>
+
+    <!-- Overhead Camera (top-down perspective) -->
+    <camera name="overhead_cam" pos="0.22 0.0 0.65" xyaxes="0 1 0 -1 0 0"/>
+
+  </worldbody>
+
+  <include file="../robot/open_manipulator_x.xml"/>
+</mujoco>

@@ -1,0 +1,20 @@
+# Core Simulation and Physics
+mujoco>=3.3.0
+glfw>=2.7.0
+PyOpenGL>=3.1.0
+
+# Numerical, Vision, and Robotics
+numpy>=1.24.0
+scipy>=1.10.0
+opencv-python>=4.8.0
+pillow>=10.0.0
+
+# Local VLM & Inference
+ollama>=0.4.0
+requests>=2.31.0
+httpx>=0.27.0
+
+# CLI and Utilities
+rich>=13.0.0
+pyyaml>=6.0.0
+

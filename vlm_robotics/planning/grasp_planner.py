@@ -26,14 +26,14 @@ class GraspPlanner:
         """
         # Grasp height depends on object type
         if "bottle" in object_type or "glass" in object_type:
-            grasp_z = 0.028
+            grasp_z = 0.030
             hover = 0.08
-            place_z = max(0.035, dest_pos[2])
+            place_z = max(0.045, dest_pos[2])
         else:
             # Cube grasp: align gripper with center of 3cm cube
-            grasp_z = max(0.015, object_pos[2])
+            grasp_z = max(0.019, object_pos[2])
             hover = self.hover_height
-            place_z = max(0.015, dest_pos[2])
+            place_z = max(0.019, dest_pos[2])
 
         pre_grasp = np.array([object_pos[0], object_pos[1], grasp_z + hover])
         grasp = np.array([object_pos[0], object_pos[1], grasp_z])
@@ -73,10 +73,14 @@ class GraspPlanner:
         object_type: str = "cube",
     ) -> Tuple[bool, str, List[Dict[str, Any]]]:
         """Generate sequence of waypoints for pick-and-lift only."""
-        grasp_z = max(0.018, object_pos[2])
+        if "bottle" in object_type or "glass" in object_type:
+            grasp_z = 0.030
+        else:
+            grasp_z = max(0.019, object_pos[2])
+
         pre_grasp = np.array([object_pos[0], object_pos[1], grasp_z + self.hover_height])
         grasp = np.array([object_pos[0], object_pos[1], grasp_z])
-        lift = np.array([object_pos[0], object_pos[1], grasp_z + self.lift_height])
+        lift = np.array([object_pos[0], object_pos[1], max(0.12, grasp_z + self.lift_height)])
 
         waypoints = [
             {"action": "open_gripper", "target_pos": None, "desc": "Opening gripper fingers"},

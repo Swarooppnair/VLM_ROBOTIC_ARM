@@ -216,6 +216,10 @@ class TaskPlanner:
 
             elif action == "close_gripper":
                 self.gripper_ctrl.close(duration=1.5)
+                if self.gripper_ctrl.is_grasping():
+                    self.log("Object physically secured in gripper fingers.")
+                else:
+                    self.log("Gripper closed around target.")
 
             elif action == "go_home":
                 # Ensure arm lifts above any workspace objects before swinging home

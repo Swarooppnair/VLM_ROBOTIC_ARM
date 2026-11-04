@@ -51,7 +51,7 @@ HOME_POSE = [0.0, -0.4, 0.6, 0.2]       # [joint1, joint2, joint3, joint4]
 READY_POSE = [0.0, -0.2, 0.4, 0.1]
 
 # Gripper Configuration
-GRIPPER_OPEN = 0.018     # Slide joint pos (open)
+GRIPPER_OPEN = 0.012     # Slide joint pos (open, 4.8cm clearance)
 GRIPPER_CLOSE = -0.009   # Slide joint pos (pinch / closed)
 
 # Ground Truth Object Metadata (used to calibrate and anchor perception)
@@ -61,83 +61,83 @@ KNOWN_OBJECTS = {
         "type": "cube",
         "color": "red",
         "dimensions": [0.03, 0.03, 0.03],
-        "default_pos": [0.16, -0.06, 0.015],
+        "default_pos": [0.16, -0.10, 0.015],
     },
     "blue_cube": {
         "body_name": "blue_cube",
         "type": "cube",
         "color": "blue",
         "dimensions": [0.03, 0.03, 0.03],
-        "default_pos": [0.17, 0.05, 0.015],
+        "default_pos": [0.17, 0.06, 0.015],
     },
     "green_cube": {
         "body_name": "green_cube",
         "type": "cube",
         "color": "green",
         "dimensions": [0.03, 0.03, 0.03],
-        "default_pos": [0.21, 0.01, 0.015],
+        "default_pos": [0.18, -0.02, 0.015],
     },
     "orange_cube": {
         "body_name": "orange_cube",
         "type": "cube",
         "color": "orange",
         "dimensions": [0.03, 0.03, 0.03],
-        "default_pos": [0.24, 0.08, 0.015],
+        "default_pos": [0.26, 0.03, 0.015],
     },
     "bottle": {
         "body_name": "bottle",
         "type": "bottle",
         "color": "yellow",
         "dimensions": [0.026, 0.026, 0.07],
-        "default_pos": [0.19, -0.16, 0.035],
+        "default_pos": [0.18, -0.21, 0.035],
     },
     "glass1": {
         "body_name": "glass1",
         "type": "glass",
         "color": "blue",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.23, 0.16, 0.035],
+        "default_pos": [0.21, 0.18, 0.035],
     },
     "glass2": {
         "body_name": "glass2",
         "type": "glass",
         "color": "purple",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.22, -0.06, 0.035],
+        "default_pos": [0.24, -0.13, 0.035],
     },
     "glass3": {
         "body_name": "glass3",
         "type": "glass",
         "color": "amber",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.27, 0.0, 0.035],
+        "default_pos": [0.26, -0.06, 0.035],
     },
     "glass4": {
         "body_name": "glass4",
         "type": "glass",
         "color": "emerald green",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.13, -0.16, 0.035],
+        "default_pos": [0.11, -0.16, 0.035],
     },
     "glass5": {
         "body_name": "glass5",
         "type": "glass",
         "color": "rose pink",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.26, -0.12, 0.035],
+        "default_pos": [0.25, 0.11, 0.035],
     },
     "glass6": {
         "body_name": "glass6",
         "type": "glass",
         "color": "teal cyan",
         "dimensions": [0.028, 0.028, 0.06],
-        "default_pos": [0.14, 0.10, 0.035],
+        "default_pos": [0.13, 0.13, 0.035],
     },
     "box": {
         "body_name": "box",
         "type": "container",
         "color": "cyan",
         "dimensions": [0.09, 0.09, 0.04],
-        "default_pos": [0.12, 0.18, 0.025],
+        "default_pos": [0.11, 0.22, 0.025],
     },
 }

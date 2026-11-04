@@ -80,11 +80,11 @@
     </body>
   </worldbody>
   <actuator>
-    <position name="joint1" joint="joint1" kp="120" forcerange="-20 20" inheritrange="1" dampratio="1"/>
-    <position name="joint2" joint="joint2" kp="120" forcerange="-20 20" inheritrange="1" dampratio="1"/>
-    <position name="joint3" joint="joint3" kp="120" forcerange="-20 20" inheritrange="1" dampratio="1"/>
-    <position name="joint4" joint="joint4" kp="120" forcerange="-20 20" inheritrange="1" dampratio="1"/>
-    <position name="gripper_left_joint" joint="gripper_left_joint" kp="80" forcerange="-5 5" inheritrange="1"
+    <position name="joint1" joint="joint1" kp="150" forcerange="-20 20" inheritrange="1" dampratio="1"/>
+    <position name="joint2" joint="joint2" kp="250" forcerange="-25 25" inheritrange="1" dampratio="1"/>
+    <position name="joint3" joint="joint3" kp="220" forcerange="-25 25" inheritrange="1" dampratio="1"/>
+    <position name="joint4" joint="joint4" kp="150" forcerange="-20 20" inheritrange="1" dampratio="1"/>
+    <position name="gripper_left_joint" joint="gripper_left_joint" kp="200" forcerange="-10 10" inheritrange="1"
       dampratio="1"/>
   </actuator>
   <contact>

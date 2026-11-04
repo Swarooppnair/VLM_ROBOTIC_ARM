@@ -19,12 +19,12 @@ class GripperController:
     def open(self, duration: float = 1.5):
         """Open gripper fingers to maximum stroke with realistic pacing."""
         self.current_target = self.open_pos
-        arm_q = self.env.get_arm_joint_positions()
+        arm_ctrl = self.env.data.ctrl[self.env.arm_actuator_ids].copy()
         dt = 0.02
         steps = max(5, int(duration / dt))
         for _ in range(steps):
             t0 = time.perf_counter()
-            self.env.set_control(arm_q, gripper_target=self.open_pos)
+            self.env.set_control(arm_ctrl, gripper_target=self.open_pos)
             self.env.step(n_steps=10)
             elapsed = time.perf_counter() - t0
             if elapsed < dt:
@@ -33,12 +33,12 @@ class GripperController:
     def close(self, duration: float = 1.5):
         """Pinch gripper fingers to grasp an object with realistic pacing."""
         self.current_target = self.close_pos
-        arm_q = self.env.get_arm_joint_positions()
+        arm_ctrl = self.env.data.ctrl[self.env.arm_actuator_ids].copy()
         dt = 0.02
         steps = max(5, int(duration / dt))
         for _ in range(steps):
             t0 = time.perf_counter()
-            self.env.set_control(arm_q, gripper_target=self.close_pos)
+            self.env.set_control(arm_ctrl, gripper_target=self.close_pos)
             self.env.step(n_steps=10)
             elapsed = time.perf_counter() - t0
             if elapsed < dt:

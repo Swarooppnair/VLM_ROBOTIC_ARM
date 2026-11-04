@@ -138,6 +138,10 @@ class RobotController:
             if elapsed < dt_substep:
                 time.sleep(dt_substep - elapsed)
 
+        # Brief settling at target pose to damp residual oscillation
+        for _ in range(5):
+            self.env.step(n_steps=max(1, int(0.01 / self.model.opt.timestep)))
+
     def move_to_cartesian_position(
         self,
         target_pos: np.ndarray,

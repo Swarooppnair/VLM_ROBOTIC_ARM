@@ -1,0 +1,23 @@
+timestamp,command,mode,task_type,target_object,destination,grasp_verified,placement_verified,recovery_attempts,vlm_latency_s,execution_time_s,task_success,notes
+2026-11-05 14:10:55,test command verification,closed_loop_verified,pick_and_place,blue_cube,glass2,True,True,0,0.45,8.2,True,Unit test execution trial
+2026-11-05 14:11:28,place the blue cube on the purple glass,closed_loop_verified,pick_and_place,blue_cube,on top of the purple glass,True,True,0,1.468,19.81,True,Execution complete and verified
+2026-11-05 14:16:26,build a pyramid using glasses\,closed_loop_verified,stack,glass1,on top of glass2,True,True,0,2.316,47.98,True,Execution complete and verified
+2026-11-05 14:23:59,test command verification,closed_loop_verified,pick_and_place,blue_cube,glass2,True,True,0,0.45,8.2,True,Unit test execution trial
+2026-11-05 16:48:47,place the bottle on green cube,closed_loop_verified,pick_and_place,bottle,on top of green cube,True,True,0,11.734,44.16,True,Execution complete and verified
+2026-11-05 16:51:14,test command verification,closed_loop_verified,pick_and_place,blue_cube,glass2,True,True,0,0.45,8.2,True,Unit test execution trial
+2026-11-05 16:54:52,place the red cube in the box,closed_loop_verified,pick_and_place,red_cube,box,True,True,0,0.651,20.07,True,Execution complete and verified
+2026-11-05 16:55:13,pick up the blue cube and put it inside the container,closed_loop_verified,pick_and_place,blue_cube,box,True,True,0,0.823,20.1,True,Execution complete and verified
+2026-11-05 16:55:33,transfer the green cube into the box,closed_loop_verified,pick_and_place,green_cube,box,True,True,0,0.666,20.07,True,Execution complete and verified
+2026-11-05 16:55:54,drop the orange cube inside the box,closed_loop_verified,pick_and_place,orange_cube,box,True,True,0,0.679,20.04,True,Execution complete and verified
+2026-11-05 16:56:15,place the blue cube on the purple glass,closed_loop_verified,pick_and_place,blue_cube,on top of the purple glass,True,True,0,0.782,20.07,True,Execution complete and verified
+2026-11-05 16:56:36,put the red cube on top of the blue glass,closed_loop_verified,pick_and_place,red_cube,on top of the blue glass,True,True,0,0.847,20.04,True,Execution complete and verified
+2026-11-05 16:56:57,place the green cube on the emerald green glass,closed_loop_verified,pick_and_place,green_cube,on top of the emerald green glass,True,True,0,0.903,20.03,True,Execution complete and verified
+2026-11-05 16:57:18,place the orange cube on the amber glass,closed_loop_verified,pick_and_place,orange_cube,on top of the amber glass,True,True,0,1.104,19.93,True,Execution complete and verified
+2026-11-05 16:57:39,place the purple glass on the edge of the table,closed_loop_verified,pick_and_place,glass2,on top of the edge of the table,True,True,0,0.702,19.83,True,Execution complete and verified
+2026-11-05 16:58:00,move the yellow bottle to the center of the table,closed_loop_verified,pick_and_place,bottle,the center of the table,True,True,0,0.68,20.02,True,Execution complete and verified
+2026-11-05 16:58:21,put the orange cube on the left side of the table,closed_loop_verified,pick_and_place,orange_cube,on top of the left side of the table,True,True,0,0.873,20.04,True,Execution complete and verified
+2026-11-05 16:58:41,move the red cube to the right side of the table,closed_loop_verified,pick_and_place,red_cube,the right side of the table,True,True,0,0.755,20.01,True,Execution complete and verified
+2026-11-05 16:59:02,move the red cube to the left of the green cube,closed_loop_verified,pick_and_place,red_cube,to the left of the green cube,True,True,0,1.027,20.01,True,Execution complete and verified
+2026-11-05 16:59:23,move the blue cube to the right of the red cube,closed_loop_verified,pick_and_place,blue_cube,to the right of the red cube,True,True,0,0.972,19.99,True,Execution complete and verified
+2026-11-05 17:10:10,blue cube on the Red Cube,closed_loop_verified,pick_and_place,blue_cube,on top of red_cube,True,True,0,10.51,40.89,True,Execution complete and verified
+2026-11-05 17:13:00,blue cube inside the box,closed_loop_verified,pick_and_place,blue_cube,box,True,True,0,1.762,43.53,True,Execution complete and verified

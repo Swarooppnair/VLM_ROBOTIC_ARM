@@ -44,7 +44,7 @@ class ActionValidator:
     def validate_vlm_plan(cls, plan: Dict[str, Any]) -> Tuple[bool, str]:
         """Verify high-level plan structure before execution."""
         task = plan.get("task")
-        if task not in ("pick_and_place", "stack", "multi_step", "pick", "inspect", "home", "status"):
+        if task not in ("pick_and_place", "pyramid", "stack", "line", "sort", "multi_step", "pick", "inspect", "home", "status"):
             return False, f"Invalid task type '{task}'."
 
         if task in ("pick_and_place", "pick"):

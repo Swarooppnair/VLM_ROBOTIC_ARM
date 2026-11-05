@@ -8,7 +8,7 @@ from typing import Dict, Any, Tuple, Optional
 class VLMResponseParser:
     """Extracts, validates, and sanitizes JSON responses from local VLM."""
 
-    ALLOWED_TASKS = {"pick_and_place", "stack", "pick", "inspect", "home", "status", "multi_step"}
+    ALLOWED_TASKS = {"pick_and_place", "pyramid", "stack", "line", "sort", "pick", "inspect", "home", "status", "multi_step"}
 
     @classmethod
     def extract_json(cls, raw_text: str) -> Optional[Dict[str, Any]]:
@@ -52,7 +52,11 @@ class VLMResponseParser:
             return False, "Missing 'task' field in VLM response.", {}
 
         # Allow slight synonyms
-        if "stack" in task or "build" in task or "tower" in task:
+        if "pyramid" in task:
+            task = "pyramid"
+        elif "line" in task or "row" in task:
+            task = "line"
+        elif "stack" in task or "tower" in task or ("build" in task and "pyramid" not in task):
             task = "stack"
         elif "pick" in task and ("place" in task or "move" in task):
             task = "pick_and_place"
@@ -89,7 +93,11 @@ class VLMResponseParser:
         validated = {
             "task": task,
             "object": target_obj,
+            "object_type": parsed.get("object_type"),
+            "target_objects": parsed.get("target_objects"),
             "destination": destination,
+            "spatial_relation": parsed.get("spatial_relation"),
+            "box_2d": parsed.get("box_2d"),
             "base_object": parsed.get("base_object"),
             "stacked_objects": parsed.get("stacked_objects"),
             "confidence": confidence,

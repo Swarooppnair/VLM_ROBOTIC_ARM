@@ -155,9 +155,10 @@ class SimulationEnvironment:
                 cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, camera_name)
                 if cam_id == -1:
                     raise ValueError(f"Camera '{camera_name}' not found in model.")
-                self.renderer.enable_depth_rendering()
+                self.renderer.disable_depth_rendering()
                 self.renderer.update_scene(self.data, camera=cam_id)
                 rgb = self.renderer.render()
+                self.renderer.enable_depth_rendering()
                 depth = self.renderer.render()
                 self.renderer.disable_depth_rendering()
                 return rgb, depth

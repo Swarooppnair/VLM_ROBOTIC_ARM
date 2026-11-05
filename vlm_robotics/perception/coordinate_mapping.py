@@ -147,9 +147,20 @@ class CoordinateMapper:
                         target = np.array([ref_pos[0], ref_pos[1], ref_pos[2] + 0.059])
                     return self.clamp_to_workspace(target)
                 else:
-                    # Place adjacent on table beside reference object (cube EE height on table is 0.044m)
-                    offset_y = 0.055 if ref_pos[1] <= 0 else -0.055
-                    target = np.array([ref_pos[0], ref_pos[1] + offset_y, 0.044])
+                    # Place adjacent on table beside reference object (directional offsets)
+                    offset_x = 0.0
+                    offset_y = 0.0
+                    if "left" in dest_clean:
+                        offset_y = 0.055
+                    elif "right" in dest_clean:
+                        offset_y = -0.055
+                    elif "front" in dest_clean or "forward" in dest_clean:
+                        offset_x = 0.050
+                    elif "behind" in dest_clean or "back" in dest_clean:
+                        offset_x = -0.050
+                    else:
+                        offset_y = 0.055 if ref_pos[1] <= 0 else -0.055
+                    target = np.array([ref_pos[0] + offset_x, ref_pos[1] + offset_y, 0.044])
                     return self.clamp_to_workspace(target)
 
         # 3. Table edges and corners (z = 0.044 for cube on table)

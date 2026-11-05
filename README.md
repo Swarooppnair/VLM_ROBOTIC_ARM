@@ -4,7 +4,23 @@
 [![MuJoCo 3.3+](https://img.shields.io/badge/physics-MuJoCo%203.3+-green.svg)](https://mujoco.org/)
 [![VLM: Qwen2.5-VL 3B](https://img.shields.io/badge/VLM-Qwen2.5--VL%203B%20(Local)-purple.svg)](https://ollama.com/library/qwen2.5vl)
 [![Robot: OpenMANIPULATOR-X](https://img.shields.io/badge/Robot-ROBOTIS%20OpenMANIPULATOR--X-orange.svg)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
-[![Tests Passing](https://img.shields.io/badge/tests-8%2F8%20passed-brightgreen.svg)](#verification-and-test-results)
+[![Tests Passing](https://img.shields.io/badge/tests-12%2F12%20passed-brightgreen.svg)](#verification-and-test-results)
+
+> [!IMPORTANT]
+> **MANDATORY PREREQUISITE: LOCAL VLM REQUIRED**
+> **Without the local VLM (Qwen2.5-VL) running in Ollama, this project CANNOT and WILL NOT run.**
+>
+> This is a vision-language autonomous robotics system. All semantic scene understanding, multi-camera visual grounding, closed-loop grasp verification, and task reasoning are driven directly by **Qwen2.5-VL via Ollama**.
+>
+> **Before running the system, you must start Ollama:**
+> ```bash
+> # 1. Start Ollama service (if not already running)
+> ollama serve
+>
+> # 2. Verify Qwen2.5-VL model is loaded and ready
+> ollama run qwen2.5vl:3b
+> ```
+> *If Ollama is not active, the system startup validation will immediately halt execution and instruct you to launch it.*
 
 An end-to-end, locally running Vision-Language manipulation system that translates natural-language commands into robotic manipulation on an official ROBOTIS OpenMANIPULATOR-X arm in a high-fidelity 3D tabletop simulation.
 

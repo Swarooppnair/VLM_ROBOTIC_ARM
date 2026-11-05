@@ -1,0 +1,224 @@
+{
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "results": [
+    {
+      "id": 1,
+      "category": "Inspection",
+      "command": "identify all objects on the table",
+      "status": "PASS",
+      "elapsed": 3.71,
+      "message": "Inspection completed",
+      "task_type": "inspect"
+    },
+    {
+      "id": 2,
+      "category": "Inspection",
+      "command": "inspect the tabletop workspace",
+      "status": "PASS",
+      "elapsed": 3.33,
+      "message": "Inspection completed",
+      "task_type": "inspect"
+    },
+    {
+      "id": 3,
+      "category": "Utility",
+      "command": "go home",
+      "status": "PASS",
+      "elapsed": 2.93,
+      "message": "Robot returned home",
+      "task_type": "home"
+    },
+    {
+      "id": 4,
+      "category": "Utility",
+      "command": "reset arm",
+      "status": "PASS",
+      "elapsed": 2.96,
+      "message": "Robot returned home",
+      "task_type": "home"
+    },
+    {
+      "id": 5,
+      "category": "Level 1: Container",
+      "command": "place the red cube in the box",
+      "status": "PASS",
+      "elapsed": 20.78,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 6,
+      "category": "Level 1: Container",
+      "command": "pick up the blue cube and put it inside the container",
+      "status": "PASS",
+      "elapsed": 20.97,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 7,
+      "category": "Level 1: Container",
+      "command": "transfer the green cube into the box",
+      "status": "PASS",
+      "elapsed": 20.79,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 8,
+      "category": "Level 1: Container",
+      "command": "drop the orange cube inside the box",
+      "status": "PASS",
+      "elapsed": 20.77,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 9,
+      "category": "Level 2: Glass Target",
+      "command": "place the blue cube on the purple glass",
+      "status": "PASS",
+      "elapsed": 20.9,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 10,
+      "category": "Level 2: Glass Target",
+      "command": "put the red cube on top of the blue glass",
+      "status": "PASS",
+      "elapsed": 20.95,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 11,
+      "category": "Level 2: Glass Target",
+      "command": "place the green cube on the emerald green glass",
+      "status": "PASS",
+      "elapsed": 20.99,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 12,
+      "category": "Level 2: Glass Target",
+      "command": "place the orange cube on the amber glass",
+      "status": "PASS",
+      "elapsed": 21.09,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 13,
+      "category": "Level 2: Spatial Area",
+      "command": "place the purple glass on the edge of the table",
+      "status": "PASS",
+      "elapsed": 20.58,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 14,
+      "category": "Level 2: Spatial Area",
+      "command": "move the yellow bottle to the center of the table",
+      "status": "PASS",
+      "elapsed": 20.76,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 15,
+      "category": "Level 2: Spatial Area",
+      "command": "put the orange cube on the left side of the table",
+      "status": "PASS",
+      "elapsed": 20.96,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 16,
+      "category": "Level 2: Spatial Area",
+      "command": "move the red cube to the right side of the table",
+      "status": "PASS",
+      "elapsed": 20.81,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 17,
+      "category": "Level 2: Relative Offset",
+      "command": "move the red cube to the left of the green cube",
+      "status": "PASS",
+      "elapsed": 21.08,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 18,
+      "category": "Level 2: Relative Offset",
+      "command": "move the blue cube to the right of the red cube",
+      "status": "PASS",
+      "elapsed": 21.01,
+      "message": "Execution complete and verified",
+      "task_type": "pick_and_place"
+    },
+    {
+      "id": 19,
+      "category": "Level 3: Structural",
+      "command": "build a pyramid using glasses",
+      "status": "PASS",
+      "elapsed": 60.17,
+      "message": "Glasses pyramid assembled",
+      "task_type": "pyramid"
+    },
+    {
+      "id": 20,
+      "category": "Level 3: Structural",
+      "command": "build a pyramid of cubes",
+      "status": "PASS",
+      "elapsed": 60.34,
+      "message": "Cubes pyramid successfully built",
+      "task_type": "pyramid"
+    },
+    {
+      "id": 21,
+      "category": "Level 3: Structural",
+      "command": "stack the cubes into a tower",
+      "status": "PASS",
+      "elapsed": 63.36,
+      "message": "Tower construction complete (4 levels)",
+      "task_type": "stack"
+    },
+    {
+      "id": 22,
+      "category": "Level 3: Structural",
+      "command": "arrange the glasses in a line",
+      "status": "PASS",
+      "elapsed": 61.51,
+      "message": "Line arrangement complete",
+      "task_type": "line"
+    },
+    {
+      "id": 23,
+      "category": "Level 2: Semantic Sorting",
+      "command": "move all warm-coloured objects into the box",
+      "status": "PASS",
+      "elapsed": 40.3,
+      "message": "Sorted 2 warm objects",
+      "task_type": "sort"
+    },
+    {
+      "id": 24,
+      "category": "Level 4: Sector Clearing",
+      "command": "clear the right side of the table",
+      "status": "PASS",
+      "elapsed": 20.19,
+      "message": "Cleared 1 objects",
+      "task_type": "clear"
+    }
+  ]
+}

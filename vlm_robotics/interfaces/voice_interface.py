@@ -101,3 +101,30 @@ class VoiceInterface:
     def is_listening(self) -> bool:
         return self._is_listening
 
+    def speak(self, text: str, async_mode: bool = True):
+        """
+        Vocalize status update or explanation using local Speech Synthesizer.
+        Runs asynchronously in a daemon thread so it never blocks robot control.
+        """
+        if not text:
+            return
+
+        def _tts():
+            try:
+                import win32com.client
+                speaker = win32com.client.Dispatch("SAPI.SpVoice")
+                speaker.Speak(text)
+            except Exception:
+                try:
+                    import subprocess
+                    ps_cmd = f"Add-Type –AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('{text.replace("'", "")}')"
+                    subprocess.run(["powershell", "-NoProfile", "-Command", ps_cmd], timeout=5, creationflags=0x08000000)
+                except Exception:
+                    pass
+
+        if async_mode:
+            threading.Thread(target=_tts, daemon=True).start()
+        else:
+            _tts()
+
+
